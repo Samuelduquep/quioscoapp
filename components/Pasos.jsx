@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 const pasos = [
     {paso: 1, nombre: 'Menú', url: '/'},
     {paso: 2, nombre: 'Resumen', url: '/resumen'},
-    {paso: 3, nombre: 'Datos y Total', url: '/total'},
+    {paso: 3, nombre: 'Pagar', url: '/total'},
 ]
 
 const Pasos = () => {
@@ -25,13 +25,13 @@ const Pasos = () => {
 
   return (
     <>
-     <div className=" flex justify-between bg-green-300 p-10">
+     <div className=" flex justify-between mb-4">
         {pasos.map(paso=>(
             <button
                 onClick={()=>{
                     router.push(paso.url)
                 }}
-                className=" text-2xl font-bold uppercase"
+                className="md:text-xl uppercase px-3 py-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                 key={paso.paso}>
                 {paso.nombre}
             </button>

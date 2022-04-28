@@ -19,8 +19,8 @@ const Modal = () => {
 
   return (
     <div className="w-full h-full bg-black bg-opacity-80 top-0 left-0 fixed flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-lg p-4 flex flex-col items-center relative m-8 md:w-2/3 lg:w-1/2">
-        <div className=" absolute right-5 top-5 z-10">
+      <div className="bg-white rounded-lg shadow-lg md:p-4 p-4 flex md:flex-col md:justify-center relative md:m-5 h-auto md:h-3/5 md:w-4/5 lg:w-2/3 xl:w-3/5">
+        <div className="absolute right-5 top-5 z-10">
           <button
            onClick={() => {
             handleChangeModal();
@@ -42,8 +42,8 @@ const Modal = () => {
             </svg>
           </button>
         </div>
-        <div className="bg-slate-200 rounded-md gap-5 flex flex-col md:flex-row items-center p-4">
-          <div className="md:w-1/2">
+        <div className="rounded-md md:gap-5 flex flex-col md:flex-row items-center justify-around p-4">
+          <div className="md:w-1/2 w-2/5">
             <Image
               width={300}
               height={400}
@@ -53,11 +53,11 @@ const Modal = () => {
             />
           </div>
           <div className="p-2 md:w-1/2">
-            <h1 className=" text-4xl font-bold m-5 text-center">{nombre}</h1>
-            <p className=" m-5 font-black text-5xl text-center text-amber-500">
+            <h1 className=" text-3xl md:text-4xl font-bold md:m-5 text-center">{nombre}</h1>
+            <p className=" md:m-5 mt-2 font-black text-3xl md:text-5xl text-center text-amber-500">
               {formatearDinero(precio)}
             </p>
-            <div className="flex gap-4 mt-5 justify-center">
+            <div className="flex md:gap-4 md:mt-5 mt-2 justify-center">
               <button
                 type="button"
                 onClick={() => {
@@ -106,7 +106,7 @@ const Modal = () => {
                 </svg>
               </button>
             </div>
-            <p className=" text-md font-bold m-5 text-center">
+            <p className=" text-md font-bold md:m-5 m-2 text-center">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
               commodi, nesciunt voluptas veritatis tempore
             </p>
@@ -118,7 +118,7 @@ const Modal = () => {
               onClick={() => {
                 handleAgregarPedido({...producto, cantidad})
               }}
-              className=" bg-indigo-800 hover:bg-cyan-600 text-white w-full p-4 mt-2 rounded-md uppercase font-bold transition-colors"
+              className=" bg-indigo-800 hover:bg-cyan-600 text-white w-full md:p-4 p-2 mt-2 rounded-md uppercase font-bold transition-colors"
             >
               {edicion ? 'Guardar Cambios' : 'Agregar'}
             </button>

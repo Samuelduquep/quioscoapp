@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   return (
     <>
-    <div className=" pt-10">
+    <div className=" p-10 flex justify-center content-center">
        <Image width={300} height={100} src="/assets/img/logo.svg" alt="Imagen Logotipo"/>
     </div>
      
