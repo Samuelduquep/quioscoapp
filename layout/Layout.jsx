@@ -1,37 +1,54 @@
-import Head from "next/head"
-import Sidebar from "../components/Sidebar"
-import Modal from "../components/Modal" 
-import Pasos from "../components/Pasos"
-import useQuiosco from "../hooks/useQuiosco"
-import { ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
+import Head from "next/head";
+import Sidebar from "../components/Sidebar";
+import Modal from "../components/Modal";
+import Pasos from "../components/Pasos";
+import useQuiosco from "../hooks/useQuiosco";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import BurguerButton from "../components/BurguerButton";
 
-export default function Layout({children, pagina}) {
+export default function Layout({ children, pagina }) {
+  const [click, setClick] = useState(false);
+  const [ocultar, setOcultar] = useState(true);
 
-    const {modal} = useQuiosco()
+  const handleClick = () => {
+    setClick(!click);
+    setOcultar(!ocultar);
+  };
 
-    return (
-        <>
-            <Head>
-                <title>Café - {pagina}</title>
-                <meta name="description" content="Quiosco Cafetería"/>
-                <link rel="shortcut icon" href="/FaviconSamuel.svg"/>
-            </Head>
+  const {modal} = useQuiosco()
 
-            <div className=" md:flex">
-                <aside className="md:w-4/12 xl:w-1/4 2xl:w-1/5 bg-indigo-50 shadow-lg">
-                    <Sidebar/>
-                </aside>
+  return (
+    <>
+      <Head>
+        <title>Café - {pagina}</title>
+        <meta name="description" content="Quiosco Cafetería" />
+        <link rel="shortcut icon" href="/FaviconSamuel.svg" />
+      </Head>
 
-                <main className=" md:w-8/12 xl:w-3/4 2xl:w-4/5 h-screen md:overflow-y-scroll">
-                    <div className=" p-10">
-                        <Pasos/>
-                        {children}
-                    </div>
-                </main>
-            </div>
-            {modal && <Modal/>}
-            <ToastContainer/>
-        </>
-    )
-  }
+      <div className="md:flex">
+        <aside
+          className={`md:w-4/12 xl:w-1/4 2xl:w-1/5 shadow-lg md:p-0 p-2 md:bg-slate-200 bg-gray-100
+          }`}
+        >
+          <div className="md:hidden relative">
+            <BurguerButton click={click} handleClick={handleClick} />
+          </div>
+          <div className={` md:block ${ocultar && "hidden"}`}>
+            <Sidebar />
+          </div>
+        </aside>
+
+        <main className=" md:w-8/12 xl:w-3/4 2xl:w-4/5 h-screen md:overflow-y-scroll">
+          <div className={`p-10 md:mt-5`}>
+            <Pasos />
+            {children}
+          </div>
+        </main>
+      </div>
+      {modal && <Modal/>}
+      <ToastContainer />
+    </>
+  );
+}
