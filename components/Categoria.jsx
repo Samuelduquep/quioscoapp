@@ -3,13 +3,14 @@ import useQuiosco from "../hooks/useQuiosco"
 import { useRouter } from "next/router";
 
 const Categoria = ({categoria}) => {
-    const {categoriaActual, handleClickCategoria} = useQuiosco()
+    const {categoriaActual, handleClickCategoria, handleClick} = useQuiosco()
     const {nombre, icono, id} = categoria
     const router = useRouter()
   return (
     <div className={`${categoriaActual?.id === id ? 'bg-amber-300' : ''} flex items-center place-content-between gap-4 w-full border p-5 hover:bg-sky-200 transition-colors hover:cursor-pointer`}
     onClick={()=> {
       handleClickCategoria(id),
+      handleClick()
       router.push('/')
     }}
     >

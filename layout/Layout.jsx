@@ -9,15 +9,9 @@ import { useState } from "react";
 import BurguerButton from "../components/BurguerButton";
 
 export default function Layout({ children, pagina }) {
-  const [click, setClick] = useState(false);
-  const [ocultar, setOcultar] = useState(true);
+  
 
-  const handleClick = () => {
-    setClick(!click);
-    setOcultar(!ocultar);
-  };
-
-  const {modal} = useQuiosco()
+  const {modal, handleClick, click, ocultar} = useQuiosco()
 
   return (
     <>
