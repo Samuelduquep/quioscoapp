@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Sidebar from "../components/Sidebar";
 import Modal from "../components/Modal";
 import Pasos from "../components/Pasos";
@@ -9,9 +10,7 @@ import { useState } from "react";
 import BurguerButton from "../components/BurguerButton";
 
 export default function Layout({ children, pagina }) {
-  
-
-  const {modal, handleClick, click, ocultar} = useQuiosco()
+  const { modal, handleClick, click, ocultar } = useQuiosco();
 
   return (
     <>
@@ -26,9 +25,20 @@ export default function Layout({ children, pagina }) {
           className={`md:w-4/12 xl:w-1/4 2xl:w-1/5 shadow-lg md:p-0 p-2 md:bg-slate-200 bg-gray-100
           }`}
         >
-          <div className="md:hidden relative">
-            <BurguerButton click={click} handleClick={handleClick} />
+          <div className="flex justify-between">
+            <div className="md:hidden relative">
+              <BurguerButton click={click} handleClick={handleClick} />
+            </div>
+            <div className={`${!ocultar && "hidden"} md:hidden`}>
+              <Image
+                width={200}
+                height={60}
+                src="/assets/img/logo.svg"
+                alt="Imagen Logotipo"
+              />
+            </div>
           </div>
+
           <div className={` md:block ${ocultar && "hidden"}`}>
             <Sidebar />
           </div>
@@ -41,7 +51,7 @@ export default function Layout({ children, pagina }) {
           </div>
         </main>
       </div>
-      {modal && <Modal/>}
+      {modal && <Modal />}
       <ToastContainer />
     </>
   );
